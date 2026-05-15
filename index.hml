@@ -1,1 +1,593 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+<title>Jam Tangan Premium | Promo 54% + Gratis Ongkir</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
+  body {
+    background: #0A0A0A;
+    color: #F5F0E8;
+    font-family: 'Barlow', sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  /* Container responsif */
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* TOMBOL WA FLOATING BAWAH KANAN (Icon Asli) */
+  .float-wa {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: #25D366;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 1000;
+    cursor: pointer;
+    border: 2px solid #fff;
+  }
+  .float-wa:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 28px rgba(37,211,102,0.5);
+  }
+  .float-wa svg {
+    width: 38px;
+    height: 38px;
+    fill: white;
+  }
+  @media (max-width: 550px) {
+    .float-wa { width: 56px; height: 56px; bottom: 18px; right: 18px; }
+    .float-wa svg { width: 32px; height: 32px; }
+  }
+
+  /* TOP BAR COUNTDOWN */
+  .top-bar {
+    background: #1a0505;
+    border-bottom: 2px solid #E74C3C;
+    padding: 10px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    text-align: center;
+  }
+  .top-text {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #E74C3C;
+    letter-spacing: 1px;
+  }
+  .cd-simple {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    background: rgba(0,0,0,0.6);
+    padding: 4px 12px;
+    border-radius: 40px;
+  }
+  .cd-simple span {
+    font-family: 'Bebas Neue', monospace;
+    font-size: 22px;
+    color: #E8C96A;
+    min-width: 44px;
+    text-align: center;
+  }
+  .top-promo {
+    color: #C9A84C;
+    font-size: 12px;
+  }
+
+  /* HERO - TAMPILAN HP: GAMBAR DI ATAS, TEKS DI BAWAH */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0 32px;
+    gap: 24px;
+  }
+  /* Urutan: gambar lebih dulu (atas), baru teks */
+  .hero-image-wrap {
+    order: 1;
+    text-align: center;
+  }
+  .hero-content {
+    order: 2;
+  }
+  .hero-img {
+    width: 100%;
+    max-width: 380px;
+    border-radius: 28px;
+    object-fit: cover;
+    box-shadow: 0 20px 35px -10px rgba(0,0,0,0.6);
+    border: 1px solid rgba(201,168,76,0.3);
+    transition: transform 0.3s;
+  }
+  .hero-img:hover {
+    transform: scale(1.02);
+  }
+  .badge {
+    background: #C9A84C;
+    color: #000;
+    display: inline-block;
+    padding: 4px 14px;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(44px, 10vw, 72px);
+    line-height: 0.95;
+    margin-bottom: 12px;
+  }
+  h1 span { color: #C9A84C; }
+  .desc {
+    font-size: 15px;
+    color: #bbb;
+    margin-bottom: 24px;
+    max-width: 100%;
+  }
+  .price-card {
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 16px 18px;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 18px;
+    border-radius: 16px;
+  }
+  .old-price {
+    font-size: 18px;
+    text-decoration: line-through;
+    color: #aaa;
+    margin-right: 12px;
+  }
+  .discount {
+    background: #E74C3C;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 20px;
+    display: inline-block;
+  }
+  .new-price {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 52px;
+    color: #C9A84C;
+    line-height: 1;
+    margin: 8px 0;
+  }
+  .save {
+    background: rgba(231,76,60,0.2);
+    border: 1px solid #E74C3C;
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 40px;
+    display: inline-block;
+  }
+  .free-ship-badge {
+    background: #1e2a1a;
+    border-left: 4px solid #25D366;
+    padding: 8px 16px;
+    font-weight: 700;
+    margin: 16px 0 12px;
+    display: inline-block;
+    border-radius: 8px;
+  }
+  .btn-wa {
+    background: #25D366;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 28px;
+    font-weight: 800;
+    font-size: 16px;
+    color: #000;
+    text-decoration: none;
+    border-radius: 60px;
+    transition: 0.2s;
+    margin-top: 8px;
+    width: auto;
+    justify-content: center;
+  }
+  .btn-wa:hover { transform: translateY(-3px); filter: brightness(1.05); }
+
+  /* SECTION UMUM */
+  section { padding: 48px 0 32px; border-top: 1px solid rgba(201,168,76,0.15); }
+  .section-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 38px;
+    margin-bottom: 28px;
+  }
+  .grid-varian {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 20px;
+    margin: 32px 0;
+  }
+  .var-card {
+    background: #1A1A1A;
+    padding: 14px;
+    border-radius: 20px;
+    transition: 0.2s;
+    cursor: pointer;
+    text-align: center;
+  }
+  .var-card:hover { transform: translateY(-5px); background: #242424; }
+  .var-img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+  .var-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 12px 0 4px;
+  }
+  .var-price {
+    color: #C9A84C;
+    font-weight: 800;
+    font-size: 20px;
+  }
+  .var-old {
+    text-decoration: line-through;
+    font-size: 13px;
+    color: #777;
+    margin-left: 6px;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 28px;
+    margin: 32px 0;
+  }
+  .feat { text-align: center; }
+  .feat-icon { font-size: 34px; margin-bottom: 8px; }
+  .feat-title { font-weight: 800; color: #C9A84C; font-size: 15px; }
+
+  .ship-banner {
+    background: #C9A84C;
+    color: #0A0A0A;
+    padding: 20px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 18px;
+    border-radius: 24px;
+    margin: 30px 0;
+  }
+
+  .include-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-items: center;
+  }
+  .include-img {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 24px;
+    object-fit: cover;
+  }
+  .include-list {
+    width: 100%;
+  }
+  .include-list li {
+    list-style: none;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+  }
+  .include-list li::before {
+    content: "✓";
+    background: #C9A84C;
+    color: black;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .testi-card {
+    background: #111;
+    padding: 20px;
+    border-radius: 20px;
+  }
+  .stars { color: #F1C40F; margin-bottom: 10px; letter-spacing: 2px; }
+
+  .cta-block {
+    text-align: center;
+    background: #111;
+    padding: 48px 20px;
+    border-radius: 32px;
+    margin: 40px 0;
+  }
+  .big-price {
+    font-size: 52px;
+    font-family: 'Bebas Neue', cursive;
+    color: #C9A84C;
+  }
+
+  footer {
+    text-align: center;
+    padding: 28px 16px;
+    border-top: 1px solid #222;
+    font-size: 12px;
+    color: #888;
+  }
+
+  /* reveal animasi */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (min-width: 768px) {
+    .hero {
+      flex-direction: row;
+      align-items: center;
+      gap: 48px;
+    }
+    .hero-image-wrap { order: 2; flex: 1; }
+    .hero-content { order: 1; flex: 1.2; }
+    .hero-img { max-width: 100%; }
+    .testi-grid { grid-template-columns: repeat(3, 1fr); }
+    .include-wrap { flex-direction: row; }
+    .include-img { max-width: 380px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FLOATING WHATSAPP ICON ASLI (KANAN BAWAH) -->
+<div class="float-wa" id="waFloatBtn">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.062.527 4 1.449 5.703L0 24l6.484-1.404A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.817 9.817 0 01-5.051-1.396l-.361-.214-3.851.834.848-3.757-.235-.387A9.794 9.794 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/>
+  </svg>
+</div>
+
+<!-- TOP BAR COUNTDOWN -->
+<div class="top-bar">
+  <div class="top-text">⚡ PROMO BERAKHIR DALAM:</div>
+  <div class="cd-simple">
+    <span id="topHour">00</span> :
+    <span id="topMin">00</span> :
+    <span id="topSec">00</span>
+  </div>
+  <div class="top-promo">Hemat Rp150.000 | Cuma Rp130k</div>
+</div>
+
+<main class="container">
+  <!-- HERO: GAMBAR DI ATAS (untuk HP), di desktop akan flex row dengan gambar tetap proporsional -->
+  <div class="hero">
+    <div class="hero-image-wrap">
+      <img src="foto3.webp" alt="Jam Tangan Premium" class="hero-img" onerror="this.src='https://placehold.co/600x600?text=Premium+Watch'">
+    </div>
+    <div class="hero-content">
+      <div class="badge">EDISI PREMIUM 2026</div>
+      <h1>Tampil <span>Mewah</span><br>Harga Merakyat</h1>
+      <p class="desc">Jam tangan premium + gelang + cincin + kalung. Paket super lengkap untuk pria modern. Desain sporty elegan, garansi kualitas.</p>
+      
+      <div class="price-card">
+        <div>
+          <span class="old-price">Rp 280.000</span>
+          <span class="discount">DISKON 54%</span>
+        </div>
+        <div class="new-price">Rp 130.000</div>
+        <div class="save">💎 HEMAT Rp 150.000 hari ini</div>
+      </div>
+      
+      <div class="free-ship-badge">🚚 GRATIS ONGKIR SE-JAWA (Jabodetabek & seluruh Jawa)</div><br>
+      <a href="https://wa.me/6285738336676?text=Halo%2C%20saya%20mau%20order%20jam%20tangan%20premium%20set%20Rp%20130rb!%20Tolong%20info%20lebih%20lanjut%20dan%20variannya." class="btn-wa" target="_blank">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.062.527 4 1.449 5.703L0 24l6.484-1.404A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.817 9.817 0 01-5.051-1.396l-.361-.214-3.851.834.848-3.757-.235-.387A9.794 9.794 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+        PESAN SEKARANG VIA WA
+      </a>
+    </div>
+  </div>
+
+  <!-- VARIAN PRODUK -->
+  <section class="reveal">
+    <h2 class="section-title">Pilih Varian Favoritmu</h2>
+    <div class="grid-varian">
+      <div class="var-card" data-var="Deyros Silver">
+        <img src="foto1.webp" class="var-img" alt="Silver" onerror="this.src='https://placehold.co/300x300?text=Silver'">
+        <div class="var-name">Deyros Silver</div>
+        <div><span class="var-price">Rp130k</span> <span class="var-old">Rp280k</span></div>
+      </div>
+      <div class="var-card" data-var="Deyros Full Black">
+        <img src="foto2.webp" class="var-img" alt="Black" onerror="this.src='https://placehold.co/300x300?text=Black'">
+        <div class="var-name">Deyros Full Black</div>
+        <div><span class="var-price">Rp130k</span> <span class="var-old">Rp280k</span></div>
+      </div>
+      <div class="var-card" data-var="Geneva Gold">
+        <img src="foto1.png" class="var-img" alt="Gold" onerror="this.src='https://placehold.co/300x300?text=Gold'">
+        <div class="var-name">Geneva Gold</div>
+        <div><span class="var-price">Rp130k</span> <span class="var-old">Rp280k</span></div>
+      </div>
+      <div class="var-card" data-var="Deyros Black Gold">
+        <img src="foto4.webp" class="var-img" alt="BlackGold" onerror="this.src='https://placehold.co/300x300?text=Black+Gold'">
+        <div class="var-name">Deyros Black Gold</div>
+        <div><span class="var-price">Rp130k</span> <span class="var-old">Rp280k</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <a href="https://wa.me/6285738336676?text=Halo%20kak,%20saya%20mau%20pesan%20jam%20tangan%20premium%20set%20lengkap%20harga%20130rb.%20Varian%20apa%20saja%20yang%20tersedia?" class="btn-wa" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="black"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.062.527 4 1.449 5.703L0 24l6.484-1.404A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.817 9.817 0 01-5.051-1.396l-.361-.214-3.851.834.848-3.757-.235-.387A9.794 9.794 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+        PILIH VARIAN & ORDER WA
+      </a>
+    </div>
+  </section>
+
+  <!-- FEATURE -->
+  <section class="reveal">
+    <h2 class="section-title">Kenapa Wajib Punya?</h2>
+    <div class="feature-grid">
+      <div class="feat"><div class="feat-icon">⌚</div><div class="feat-title">Premium Look</div><div>Chronograph sporty</div></div>
+      <div class="feat"><div class="feat-icon">🎁</div><div class="feat-title">Paket Hemat</div><div>Jam+gelang+cincin+kalung</div></div>
+      <div class="feat"><div class="feat-icon">🛡️</div><div class="feat-title">Stainless Steel</div><div>Anti karat & awet</div></div>
+      <div class="feat"><div class="feat-icon">🚚</div><div class="feat-title">Gratis Ongkir</div><div>Seluruh Pulau Jawa</div></div>
+    </div>
+  </section>
+
+  <!-- SHIPPING BANNER -->
+  <div class="ship-banner reveal">🚚 GRATIS ONGKIR KE JAWA TIMUR, TENGAH, BARAT, JAKARTA, BANTEN, YOGYAKARTA</div>
+
+  <!-- YANG DIDAPATKAN -->
+  <section class="reveal">
+    <h2 class="section-title">1 Set Lengkap</h2>
+    <div class="include-wrap">
+      <img src="foto3.webp" class="include-img" alt="Paket" onerror="this.src='https://placehold.co/500x500?text=Gift+Set'">
+      <div class="include-list">
+        <li>Jam Tangan Premium (4 varian)</li>
+        <li>Gelang Cuban Link Stainless</li>
+        <li>Cincin Anyaman Pria</li>
+        <li>Kalung Liontin Anak Panah</li>
+        <li>Kotak Packing Eksklusif</li>
+        <li>Gratis Ongkir se-Jawa</li>
+        <div style="margin-top: 20px;"><span class="old-price">Rp 280.000</span> → <strong style="font-family:'Bebas Neue'; font-size: 36px; color:#C9A84C;">Rp 130.000</strong></div>
+        <a href="https://wa.me/6285738336676?text=Halo,%20saya%20mau%20order%20set%20jam%20tangan%20lengkap%20Rp%20130rb.%20Minta%20infonya%20dong" class="btn-wa" style="margin-top: 20px;" target="_blank">PESAN SET LENGKAP</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="reveal">
+    <h2 class="section-title">Testi Pembeli</h2>
+    <div class="testi-grid">
+      <div class="testi-card"><div class="stars">★★★★★</div>"Keren banget! Set lengkap, packaging rapi, cocok buat kado. Pengiriman cepat."<br><strong>- Rizky (Surabaya)</strong></div>
+      <div class="testi-card"><div class="stars">★★★★★</div>"Kualitas premium, berat dan elegan. Harga cuma 130rb dapet banyak, worth it!"<br><strong>- Dimas (Semarang)</strong></div>
+      <div class="testi-card"><div class="stars">★★★★★</div>"Varian gold kelihatan mewah. Respon admin cepat, gratis ongkir mantap."<br><strong>- Fajar (Bandung)</strong></div>
+    </div>
+  </section>
+
+  <!-- CTA BOTTOM -->
+  <div class="cta-block reveal">
+    <h2 style="font-size: 36px; font-family: 'Bebas Neue';">Stok Terbatas!</h2>
+    <p style="margin: 14px 0;">Harga spesial Rp130.000 hanya hari ini. Besok kembali ke Rp280.000</p>
+    <div class="big-price">Rp 130.000</div>
+    <div style="margin: 12px 0;"><span style="text-decoration: line-through;">Rp 280.000</span> → Hemat 54%</div>
+    <a href="https://wa.me/6285738336676?text=Halo%20min,%20saya%20mau%20order%20jam%20tangan%20premium%20set%20Rp130rb%20sekarang!%20Gratis%20ongkir%20Jawa%20kan?%20Saya%20butuh%20info%20lebih%20lanjut." class="btn-wa" style="padding: 14px 32px; font-size: 17px;" target="_blank">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="black"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.062.527 4 1.449 5.703L0 24l6.484-1.404A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.817 9.817 0 01-5.051-1.396l-.361-.214-3.851.834.848-3.757-.235-.387A9.794 9.794 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+      CHAT WHATSAPP (ORDER/INFO)
+    </a>
+    <p style="margin-top: 20px; font-size: 13px; color:#E74C3C;">⚠️ Harga promo berakhir dalam hitungan menit! Langsung chat untuk reservasi.</p>
+  </div>
+</main>
+
+<footer>
+  © 2026 Jam Tangan Premium · Gratis Ongkir se-Jawa · Customer Service siap membantu via WhatsApp
+</footer>
+
+<script>
+  // COUNTDOWN 24 Jam
+  (function() {
+    const STORAGE_KEY = 'simp_promo_deadline_v2';
+    let deadline;
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      deadline = parseInt(stored, 10);
+      if (Date.now() >= deadline) {
+        deadline = Date.now() + 24 * 60 * 60 * 1000;
+        localStorage.setItem(STORAGE_KEY, deadline);
+      }
+    } else {
+      deadline = Date.now() + 24 * 60 * 60 * 1000;
+      localStorage.setItem(STORAGE_KEY, deadline);
+    }
+
+    function updateDisplay() {
+      const now = Date.now();
+      let diff = Math.max(0, Math.floor((deadline - now) / 1000));
+      const hours = Math.floor(diff / 3600);
+      const mins = Math.floor((diff % 3600) / 60);
+      const secs = diff % 60;
+      const hEl = document.getElementById('topHour');
+      const mEl = document.getElementById('topMin');
+      const sEl = document.getElementById('topSec');
+      if (hEl) hEl.innerText = String(hours).padStart(2, '0');
+      if (mEl) mEl.innerText = String(mins).padStart(2, '0');
+      if (sEl) sEl.innerText = String(secs).padStart(2, '0');
+      if (diff <= 0) {
+        deadline = Date.now() + 24 * 60 * 60 * 1000;
+        localStorage.setItem(STORAGE_KEY, deadline);
+      }
+    }
+    updateDisplay();
+    setInterval(updateDisplay, 1000);
+  })();
+
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+
+  // FLOATING WA BUTTON
+  const waFloat = document.getElementById('waFloatBtn');
+  if (waFloat) {
+    waFloat.addEventListener('click', () => {
+      window.open('https://wa.me/6285738336676?text=Halo%2C%20saya%20tertarik%20dengan%20jam%20tangan%20premium%20Rp%20130rb.%20Saya%20mau%20order%20dan%20minta%20info%20lebih%20lanjut%20dong.', '_blank');
+    });
+  }
+
+  // klik varian langsung chat
+  document.querySelectorAll('.var-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      const varName = card.getAttribute('data-var') || card.querySelector('.var-name')?.innerText || 'varian';
+      window.open(`https://wa.me/6285738336676?text=Halo%2C%20saya%20mau%20order%20${encodeURIComponent(varName)}%20harga%20Rp130rb.%20Set%20lengkap%20gratis%20ongkir.%20Tolong%20infokan%20lebih%20lanjut.`, '_blank');
+    });
+  });
+</script>
+</body>
+</html>
